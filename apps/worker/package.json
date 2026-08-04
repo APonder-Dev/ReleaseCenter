@@ -20,7 +20,7 @@
     "@releasecenter/release-engine": "workspace:*",
     "@releasecenter/shared-types": "workspace:*",
     "bullmq": "^5.21.2",
-    "ioredis": "^5.4.1"
+    "ioredis": "^6.0.0"
   },
   "devDependencies": {
     "@types/node": "^20.16.0",
