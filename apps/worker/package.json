@@ -1,0 +1,31 @@
+{
+  "name": "@releasecenter/worker",
+  "version": "0.1.0",
+  "private": true,
+  "description": "ReleaseCenter background job worker (BullMQ).",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "lint": "eslint . --max-warnings=0",
+    "typecheck": "tsc --noEmit",
+    "test": "echo \"no tests yet\" && exit 0",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "@releasecenter/database": "workspace:*",
+    "@releasecenter/github-client": "workspace:*",
+    "@releasecenter/observability": "workspace:*",
+    "@releasecenter/release-engine": "workspace:*",
+    "@releasecenter/shared-types": "workspace:*",
+    "bullmq": "^5.21.2",
+    "ioredis": "^5.4.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.16.0",
+    "rimraf": "^6.0.1",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.3"
+  }
+}

@@ -1,0 +1,23 @@
+name: Technical debt
+description: Track a known shortcut, gap, or cleanup task
+labels: ['tech-debt']
+body:
+  - type: textarea
+    id: context
+    attributes:
+      label: What's the shortcut or gap?
+      description: What was deliberately deferred, and why?
+    validations:
+      required: true
+  - type: textarea
+    id: risk
+    attributes:
+      label: Risk if left unaddressed
+    validations:
+      required: false
+  - type: textarea
+    id: resolution
+    attributes:
+      label: Proposed resolution
+    validations:
+      required: false

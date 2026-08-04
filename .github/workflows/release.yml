@@ -1,0 +1,27 @@
+name: Release
+
+# Placeholder for Phase 14 (Release Preparation). ReleaseCenter has no
+# tagged releases yet, so this workflow currently only validates that a
+# manually-triggered dry run stays green; it does not publish anything.
+#
+# Once Phase 14 lands, this will build and push Docker images for
+# apps/web, apps/api, and apps/worker on tag push (vX.Y.Z).
+
+on:
+  workflow_dispatch:
+
+jobs:
+  dry-run:
+    name: Release dry run
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: '9.15.0'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build

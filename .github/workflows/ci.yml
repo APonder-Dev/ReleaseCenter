@@ -1,0 +1,62 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PNPM_VERSION: '9.15.0'
+  NODE_VERSION: '20'
+
+jobs:
+  build-and-test:
+    name: Install, lint, typecheck, test, build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Check formatting
+        run: pnpm format:check
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Type check
+        run: pnpm typecheck
+
+      - name: Validate Prisma schema
+        run: pnpm --filter @releasecenter/database prisma:validate
+        env:
+          # No real database is needed to validate schema syntax/config —
+          # this only needs to resolve, not connect.
+          DATABASE_URL: 'postgresql://releasecenter:releasecenter@localhost:5432/releasecenter?schema=public'
+
+      # Migration validation (`prisma migrate diff` against a throwaway
+      # database) is added once the schema has real models in Phase 2.
+
+      - name: Unit tests
+        run: pnpm test
+
+      - name: Build
+        run: pnpm build
+
+      # Integration tests (Postgres + Redis services) and Docker image
+      # builds are added once apps/api and apps/worker have real
+      # functionality (Phase 5 onward) and Dockerfiles exist (Phase 14).

@@ -1,0 +1,22 @@
+{
+  "name": "@releasecenter/observability",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Structured logging, correlation IDs, metrics, and tracing helpers.",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "lint": "eslint . --max-warnings=0",
+    "typecheck": "tsc --noEmit",
+    "test": "echo \"no tests yet\" && exit 0",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "pino": "^9.4.0"
+  },
+  "devDependencies": {
+    "rimraf": "^6.0.1",
+    "typescript": "^5.6.3"
+  }
+}

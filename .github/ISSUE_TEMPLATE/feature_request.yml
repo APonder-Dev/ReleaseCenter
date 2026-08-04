@@ -1,0 +1,44 @@
+name: Feature request
+description: Propose a new capability for ReleaseCenter
+labels: ['enhancement']
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What problem does this solve, and for whom?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+    validations:
+      required: false
+  - type: dropdown
+    id: phase
+    attributes:
+      label: Relevant roadmap phase, if known
+      options:
+        - Phase 2 - Database Design
+        - Phase 3 - Authentication and Authorization
+        - Phase 4 - GitHub App Integration
+        - Phase 5 - Repository Synchronization
+        - Phase 6 - Release State Machine
+        - Phase 7 - Changelog Engine
+        - Phase 8 - Semantic Versioning
+        - Phase 9 - Approval Workflows
+        - Phase 10 - Publication Workers
+        - Phase 11 - Web Application
+        - Phase 12 - Observability and Operations
+        - Phase 13 - Hardening
+        - Phase 14 - Release Preparation
+        - Not sure / new phase
+    validations:
+      required: false
