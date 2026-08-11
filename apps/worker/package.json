@@ -19,7 +19,7 @@
     "@releasecenter/observability": "workspace:*",
     "@releasecenter/release-engine": "workspace:*",
     "@releasecenter/shared-types": "workspace:*",
-    "bullmq": "^5.21.2",
+    "bullmq": "^6.0.9",
     "ioredis": "^5.4.1"
   },
   "devDependencies": {
